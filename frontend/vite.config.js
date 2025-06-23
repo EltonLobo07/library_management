@@ -1,27 +1,46 @@
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import path from 'path'
-import { getProxyOptions } from 'frappe-ui/src/utils/vite-dev-server'
-import { webserver_port } from '../../../sites/common_site_config.json'
+import vue from "@vitejs/plugin-vue";
+import vueJsx from "@vitejs/plugin-vue-jsx";
+import frappeui from "frappe-ui/vite";
+import path from "path";
+import IconsResolver from "unplugin-icons/resolver";
+import Components from "unplugin-vue-components/vite";
+import { defineConfig } from "vite";
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue()],
-  server: {
-    port: 8080,
-    proxy: getProxyOptions({ port: webserver_port }),
-  },
+  plugins: [
+    frappeui({
+      frappeProxy: true,
+      lucideIcons: true,
+      jinjaBootData: true,
+      buildConfig: {
+        outDir: `../library_management/public/frontend`,
+        emptyOutDir: true,
+        indexHtmlPath: "../library_management/www/frontend/index.html",
+      },
+    }),
+    vue(),
+    vueJsx(),
+    Components({
+      resolvers: IconsResolver({
+        prefix: false,
+        enabledCollections: ["lucide"],
+      }),
+    }),
+  ],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'src'),
+      "@": path.resolve(__dirname, "src"),
+      "tailwind.config.js": path.resolve(__dirname, "tailwind.config.js"),
     },
   },
-  build: {
-    outDir: `../${path.basename(path.resolve('..'))}/public/frontend`,
-    emptyOutDir: true,
-    target: 'es2015',
-  },
   optimizeDeps: {
-    include: ['frappe-ui > feather-icons', 'showdown', 'engine.io-client'],
+    include: [
+      "feather-icons",
+      "showdown",
+      "tailwind.config.js",
+      "prosemirror-state",
+      "prosemirror-view",
+      "lowlight",
+    ],
   },
-})
+});

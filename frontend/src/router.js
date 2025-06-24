@@ -6,6 +6,26 @@ const routes = [
     name: 'Home',
     component: () => import('@/pages/Home.vue'),
   },
+  {
+    path: '/articles',
+    name: 'Articles',
+    component: () => import('@/pages/Articles.vue'),
+  },
+  {
+    path: '/issued-articles',
+    name: 'Issued Articles',
+    component: () => import('@/pages/IssuedArticles.vue'),
+  },
+  {
+    path: '/articles/:articleId',
+    name: 'Article',
+    component: () => import('@/pages/Article.vue'),
+  },
+  {
+    path: '/:catchAll(.*)*',
+    name: 'Not Found',
+    component: () => import('@/pages/NotFound.vue'),
+  }
 ]
 
 let router = createRouter({

@@ -1,11 +1,7 @@
 <template>
-    <h1>My application</h1>
+	<h2>Home page</h2>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts"></script>
 
-</script>
-
-<style scoped>
-
-</style>
+<style scoped></style>

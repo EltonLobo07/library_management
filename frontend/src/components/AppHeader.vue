@@ -18,12 +18,12 @@
 			"
 		>
 			<h1 :class="classJoin('font-bold text-2xl')">Library Management</h1>
-			<button type="button" @click="props.toggleIsDarkTheme" class="relative">
+			<!-- <button type="button" @click="props.toggleIsDarkTheme" class="relative">
 				<span class="sr-only">{{
 					`switch to ${props.isDarkTheme ? 'light' : 'dark'} theme`
 				}}</span>
 				<component :is="props.isDarkTheme ? MoonIcon : SunIcon" />
-			</button>
+			</button> -->
 		</div>
 	</header>
 </template>

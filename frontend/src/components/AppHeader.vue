@@ -3,7 +3,7 @@
 		:class="
 			classJoin(
 				'sticky top-0',
-				'py-6 px-4',
+				'py-6',
 				'border-b border-black/25 dark:border-white/25',
 				'bg-white dark:bg-black'
 			)
@@ -12,7 +12,7 @@
 		<div
 			:class="
 				classJoin(
-					'max-w-[min(100%,75rem)] mx-auto',
+					'max-w-[min(100%,75rem)] mx-auto px-4',
 					'flex justify-between items-center gap-x-4'
 				)
 			"
